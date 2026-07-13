@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            scroll-behavior: smooth;
+            font-family: Arial, sans-serif;
+        }
+        #clock {
+            background-color: #02f88d;
+            color: #000000;
+            font-size: 48px;
+            margin-top: 30px;
+            border-radius: 10px;
+            border: 2px ;
+            height: 150px;
+            width: 700px;
+            
+        }
+        header h1 {
+            font-size: 58px;
+            margin-top: 20px;
+            color: #02f88d;
+        }
+        .table{
+            border:2px solid #02f88d;
+            width: 60%;
+             text-align: center;
+             background-color: #02f88d;
+             color: #000000;
+              margin-top: 20px;
+              border-radius: 20px;
+              font-size: 30px;
+              font-style: bold;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <h1><center>
+            Trex-Clock
+            </center>
+        </h1>
+    </header>
+    <center><div id="clock">
+    </div></center>
+<table class="table" align="center" cellpadding="20px" cellspacing="20px"> 
+    <tr>
+        <td>Date</td>
+        <td id="date"></td>
+    </tr>
+    <tr>
+        <td>Day</td>
+        <td id="day"></td>
+    </tr>
+    
+</table>
+<div id="stop-watch">
+
+</div>
+
+    <script>
+       let time= document.getElementById("clock");
+       time.style.fontSize = "110px";
+       time.style.textAlign = "center";
+       time.style.padding = "50px";
+       time.innerHTML = new Date().toLocaleTimeString();
+
+       let date = document.getElementById("date");
+       date.style.fontSize = "30px";
+       date.innerHTML = new Date().toLocaleDateString();
+
+       let day = document.getElementById("day");
+       day.style.fontSize = "30px";
+       day.innerHTML = new Date().toLocaleDateString('en-US', { weekday: 'long' });
+
+
+
+       let stopWatch = document.getElementById("stop-watch");
+       stopWatch.style.fontSize = "30px";
+       let startbutton = document.createElement("button");
+       startbutton.innerHTML = "Start";
+       startbutton.addEventListener("click", ()=>{
+        setInterval(()=>{
+            let times = new Date().toLocaleTimeString();
+            timeBox.innerText = times;
+        },1000);
+       });
+       let lapbutton = document.createElement("button");
+       lapbutton.innerHTML = "Lap";
+       lapbutton.addEventListener("click" ,()=>{
+       lapBox.innerText += " " + new Date().toLocaleTimeString();
+       });
+       let timeBox=document.createElement("div");
+       let lapBox=document.createElement("div");
+       stopWatch.appendChild(startbutton);
+       stopWatch.appendChild(lapbutton);
+       stopWatch.appendChild(timeBox);
+       stopWatch.appendChild(lapBox);
+    </script>
+</body>
+</html>

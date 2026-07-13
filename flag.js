@@ -143,6 +143,7 @@ searchbutton.addEventListener("click", () => {
   let country = input.value;
   input.value = "";
   countryname = country;
+  datalist.innerHTML = "";
   //flagbox.appendChild("");
   flagbox.innerHTML = "";
 
@@ -173,7 +174,7 @@ else if (countryname == "peru") {
 else {
   let error = document.createElement("div");
   error.classList = "text-red-500";
-  error.innerText = "Country not found";
+  error.innerText = "Country not found.";
   flagbox.appendChild(error);
 }
 console.log(countryname);
